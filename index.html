@@ -13,7 +13,8 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
+
+    <title>ONLINE Shop</title>
   </head>
 
   <body>
@@ -27,218 +28,93 @@
         </div>
         <img src="./image/Untitled1 copy.png" style="width: 80px" alt="" />
         <div class="d-flex">
-          <span class="material-symbols-outlined"> shopping_cart </span>
-          <div id="cart-count"></div>
+          <span class="material-symbols-outlined" id="basket-icon">
+            shopping_cart
+          </span>
+
+          <div
+            id="cart-count-container"
+            style="color: rgb(250, 144, 144); font-weight: bold"
+          >
+            <span id="cart-count"></span>
+          </div>
         </div>
       </div>
     </header>
 
     <!-- ###################################################################### -->
+
+    <div class="blure"></div>
+
+    <!-- ###################################################################### -->
+
     <div class="center-item">
-      <div class="search-bar d-flex">
+      <div class="d-flex" id="search-bar">
         <div class="search col-md-3 border border-success p-2 rounded-4 d-flex">
           <span class="material-symbols-outlined">search</span>
-          <input type="search" placeholder="Search" />
+          <input
+            oninput="filterCards()"
+            id="search-field"
+            type="search"
+            placeholder="Search"
+          />
         </div>
 
         <!-- ########################################## -->
 
         <div
-          class="category col-md-3 border-bottom border-success p-2 d-flex justify-content-between"
+          class="category col-md-3 border-bottom border-success py-2 d-flex justify-content-between"
         >
-          <input type="text" placeholder="Category" /><span
-            class="material-symbols-outlined"
+          <select
+            class="select"
+            type="text"
+            id="dropdown"
+            name="dropdown"
+            onchange="filterByCategory()"
           >
-            arrow_drop_down
-          </span>
+            <option type="text" id="disable-select" disabled selected>
+              Category
+            </option>
+            <option value="">All</option>
+            <option value="1">Tools</option>
+            <option value="2">Book</option>
+            <option value="3">Mobile</option>
+            <option value="4">Electronics</option>
+            <option value="5">Toys</option>
+          </select>
         </div>
-        <!-- <div class="col-md-3"></div> -->
       </div>
 
       <!-- ###################################################################### -->
 
-      <div class="d-flex flex-row flex-wrap align-items-center">
-        <div class="card col-md-3">
-          <img
-            src="./image/711pTh86caS.__AC_SX300_SY300_QL70_ML2_.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h3 class="card-title">KingTool 325 Piece</h3>
-            <p class="card-text">
-              KingTool 325 Piece Home Repair Tool Kit, General Home/Auto Repair
-              Tool Set, Toolbox Storage Case with Drawer, General Household Tool
-              Kit - Perfect for Homeowner, Diyer, Handyman <br /><br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi
-              commodi possimus, vel ducimus aliquid fuga ex quidem. Voluptates
-              cumque distinctio vero explicabo incidunt, reiciendis iste animi
-              dolores, aliquam, fugit beatae?
-            </p>
-            <div class="price">
-              <p>Price 700.0$</p>
-              <a onclick="addToCart('Product 1')" class="btn btn-primary"
-                >Add to cart</a
-              >
-              <!-- <button onclick="addToCart('Product 1')" class="btn btn-primary">
-                Add to Cart
-              </button> -->
+      <div
+        class="d-flex flex-row flex-wrap align-items-center align-content-center"
+        id="product-container"
+      ></div>
+
+      <!-- #################################### -->
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="cart">
+            <div class="close">
+              <span class="material-symbols-outlined">
+                disabled_by_default
+              </span>
             </div>
+
+            <h2 class="cart__title">Shopping Cart</h2>
+            <div class="cart__line"></div>
+            <div class="cart__items"></div>
+            <div class="cart__total-price"></div>
           </div>
         </div>
-
-        <!-- #################################### -->
-
-        <div class="card col-md-3">
-          <img
-            src="./image/711pTh86caS.__AC_SX300_SY300_QL70_ML2_.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h3 class="card-title">KingTool 325 Piece</h3>
-            <p class="card-text">
-              KingTool 325 Piece Home Repair Tool Kit, General Home/Auto Repair
-              Tool Set, Toolbox Storage Case with Drawer, General Household Tool
-              Kit - Perfect for Homeowner, Diyer, Handyman <br /><br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi
-              commodi possimus, vel ducimus aliquid fuga ex quidem. Voluptates
-              cumque distinctio vero explicabo incidunt, reiciendis iste animi
-              dolores, aliquam, fugit beatae?
-            </p>
-            <div class="price">
-              <p>Price 700.0$</p>
-              <a onclick="addToCart('Product 1')" class="btn btn-primary"
-                >Add to cart</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- #################################### -->
-
-        <div class="card col-md-3">
-          <img
-            src="./image/711pTh86caS.__AC_SX300_SY300_QL70_ML2_.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h3 class="card-title">KingTool 325 Piece</h3>
-            <p class="card-text">
-              KingTool 325 Piece Home Repair Tool Kit, General Home/Auto Repair
-              Tool Set, Toolbox Storage Case with Drawer, General Household Tool
-              Kit - Perfect for Homeowner, Diyer, Handyman <br /><br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi
-              commodi possimus, vel ducimus aliquid fuga ex quidem. Voluptates
-              cumque distinctio vero explicabo incidunt, reiciendis iste animi
-              dolores, aliquam, fugit beatae?
-            </p>
-            <div class="price">
-              <p>Price 700.0$</p>
-              <a onclick="addToCart('Product 1')" class="btn btn-primary"
-                >Add to cart</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- #################################### -->
-
-        <div class="card col-md-3">
-          <img
-            src="./image/711pTh86caS.__AC_SX300_SY300_QL70_ML2_.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h3 class="card-title">KingTool 325 Piece</h3>
-            <p class="card-text">
-              KingTool 325 Piece Home Repair Tool Kit, General Home/Auto Repair
-              Tool Set, Toolbox Storage Case with Drawer, General Household Tool
-              Kit - Perfect for Homeowner, Diyer, Handyman <br /><br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi
-              commodi possimus, vel ducimus aliquid fuga ex quidem. Voluptates
-              cumque distinctio vero explicabo incidunt, reiciendis iste animi
-              dolores, aliquam, fugit beatae?
-            </p>
-            <div class="price">
-              <p>Price 700.0$</p>
-              <a onclick="addToCart('Product 1')" class="btn btn-primary"
-                >Add to cart</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- #################################### -->
-
-        <div class="card col-md-3">
-          <img
-            src="./image/711pTh86caS.__AC_SX300_SY300_QL70_ML2_.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h3 class="card-title">KingTool 325 Piece</h3>
-            <p class="card-text">
-              KingTool 325 Piece Home Repair Tool Kit, General Home/Auto Repair
-              Tool Set, Toolbox Storage Case with Drawer, General Household Tool
-              Kit - Perfect for Homeowner, Diyer, Handyman <br /><br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi
-              commodi possimus, vel ducimus aliquid fuga ex quidem. Voluptates
-              cumque distinctio vero explicabo incidunt, reiciendis iste animi
-              dolores, aliquam, fugit beatae?
-            </p>
-            <div class="price">
-              <p>Price 700.0$</p>
-              <a onclick="addToCart('Product 1')" class="btn btn-primary"
-                >Add to cart</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- #################################### -->
-
-        <div class="card col-md-3">
-          <img
-            src="./image/711pTh86caS.__AC_SX300_SY300_QL70_ML2_.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h3 class="card-title">KingTool 325 Piece</h3>
-            <p class="card-text">
-              KingTool 325 Piece Home Repair Tool Kit, General Home/Auto Repair
-              Tool Set, Toolbox Storage Case with Drawer, General Household Tool
-              Kit - Perfect for Homeowner, Diyer, Handyman <br /><br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi
-              commodi possimus, vel ducimus aliquid fuga ex quidem. Voluptates
-              cumque distinctio vero explicabo incidunt, reiciendis iste animi
-              dolores, aliquam, fugit beatae?
-            </p>
-            <div class="price">
-              <p>Price 700.0$</p>
-              <a onclick="addToCart('Product 1')" class="btn btn-primary"
-                >Add to cart</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- #################################### -->
       </div>
     </div>
-
-    <!-- #################################### -->
   </body>
 
   <!-- #################################### -->
-  <aside>
-    <h2>Shopping Cart</h2>
-    <div id="cart"></div>
-  </aside>
+
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
